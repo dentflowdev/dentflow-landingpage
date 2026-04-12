@@ -50,3 +50,25 @@
     animation: none;
   }
 }
+
+/* FAQ: force readable text on desktop (Chrome/Edge + Framer + flex sometimes left questions invisible) */
+@layer components {
+  .faq-section .faq-heading {
+    color: #183b56 !important;
+    -webkit-text-fill-color: #183b56 !important;
+  }
+  .faq-section .faq-intro {
+    color: rgba(24, 59, 86, 0.9) !important;
+    -webkit-text-fill-color: rgba(24, 59, 86, 0.9) !important;
+  }
+  .faq-accordion .faq-trigger,
+  .faq-accordion .faq-trigger span {
+    color: #183b56 !important;
+    -webkit-text-fill-color: #183b56 !important;
+    opacity: 1 !important;
+  }
+  .faq-accordion .faq-answer {
+    color: rgba(24, 59, 86, 0.95) !important;
+    -webkit-text-fill-color: rgba(24, 59, 86, 0.95) !important;
+  }
+}
