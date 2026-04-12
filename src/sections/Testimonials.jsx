@@ -1,7 +1,8 @@
+﻿import { Star } from 'lucide-react';
 import { Section } from '../components/Section';
 import { Container } from '../components/Container';
 import { Card } from '../components/Card';
-import { Star } from 'lucide-react';
+import { FadeIn, StaggerContainer, StaggerItem } from '../components/FadeIn';
 
 export function Testimonials() {
   const testimonials = [
@@ -31,48 +32,57 @@ export function Testimonials() {
   return (
     <Section tinted>
       <Container>
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
-          <p className="text-sm font-bold text-primary tracking-wider uppercase mb-2">Proof</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#183B56] mb-4">Teams shipping with Dentflow</h2>
-          <p className="text-lg leading-relaxed text-[#183B56]/90">
-            From regional labs to growing DSOs — teams adopt Dentflow when phone tag stops scaling.
-          </p>
+        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-16">
+          <FadeIn>
+            <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Proof</p>
+            <h2
+              className="mb-4 text-3xl font-bold md:text-4xl"
+              style={{ color: '#183B56' }}
+            >
+              Teams shipping with Dentflow
+            </h2>
+            <p
+              className="text-lg leading-relaxed"
+              style={{ color: 'rgba(24, 59, 86, 0.9)' }}
+            >
+              From regional labs to growing DSOs - teams adopt Dentflow when phone tag stops scaling.
+            </p>
+          </FadeIn>
         </div>
 
-        {/* Static grid — no Framer Motion (motion + desktop grid caused invisible text in some browsers) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
           {testimonials.map((t) => (
-            <Card key={t.author} className="h-full flex flex-col bg-card p-6 md:p-8">
-              <div className="flex gap-0.5 mb-5" aria-label={`${t.rating} out of 5 stars`}>
-                {[...Array(t.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={17}
-                    className="fill-amber-400/90 text-amber-500/80"
-                    strokeWidth={0}
-                  />
-                ))}
-              </div>
-              <blockquote
-                className="mb-8 flex-1 text-[15px] font-normal not-italic leading-relaxed md:text-base"
-                style={{ color: '#183B56' }}
-              >
-                “{t.quote}”
-              </blockquote>
-              <div className="flex items-center gap-4 mt-auto pt-2 border-t border-border/80">
-                <div className="w-11 h-11 rounded-full bg-tint flex items-center justify-center text-primary font-bold text-lg border border-border">
-                  {t.author.charAt(0)}
+            <StaggerItem key={t.author}>
+              <Card className="flex h-full flex-col bg-card p-6 md:p-8">
+                <div className="mb-5 flex gap-0.5" aria-label={`${t.rating} out of 5 stars`}>
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={17}
+                      className="fill-amber-400/90 text-amber-500/80"
+                      strokeWidth={0}
+                    />
+                  ))}
                 </div>
-                <div>
-                  <div className="font-bold text-[#183B56] text-sm">{t.author}</div>
-                  <div className="text-xs" style={{ color: 'rgba(24, 59, 86, 0.78)' }}>
-                    {t.role}
+                <blockquote
+                  className="mb-8 flex-1 text-[15px] font-normal not-italic leading-relaxed md:text-base"
+                  style={{ color: '#183B56' }}
+                >
+                  &quot;{t.quote}&quot;
+                </blockquote>
+                <div className="mt-auto flex items-center gap-4 border-t border-border/80 pt-2">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-tint text-lg font-bold text-primary">
+                    {t.author.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-dark">{t.author}</div>
+                    <div className="text-xs text-dark/75">{t.role}</div>
                   </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </Container>
     </Section>
   );
