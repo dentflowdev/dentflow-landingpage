@@ -13,7 +13,7 @@ export function StoreDownloadButtons({
 }) {
   const center = align === "center";
   const base =
-    "group relative flex w-full sm:w-auto min-w-[200px] max-w-[240px] items-center gap-3 rounded-2xl border px-4 py-3 sm:px-5 sm:py-3.5 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+    "group relative flex w-full max-w-[260px] min-w-[200px] sm:w-auto sm:max-w-none items-center gap-3 rounded-2xl border px-4 py-3 sm:px-5 sm:py-3.5 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 mx-auto sm:mx-0";
 
   return (
     <div className={clsx("w-full", className)}>
@@ -29,8 +29,11 @@ export function StoreDownloadButtons({
       ) : null}
       <div
         className={clsx(
-          "flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3",
-          center ? "justify-center" : "justify-center lg:justify-start",
+          // Phone: center badges in the column; sm+: row as before
+          "flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-center",
+          center
+            ? "justify-center"
+            : "justify-center sm:justify-start lg:justify-start",
         )}
       >
         <motion.a
