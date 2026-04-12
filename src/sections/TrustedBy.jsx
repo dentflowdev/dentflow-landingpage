@@ -1,39 +1,64 @@
 import { Container } from '../components/Container';
 import { FadeIn } from '../components/FadeIn';
 
+/** Labs shown in the scrolling strip (duplicated in DOM for seamless loop). */
+const REGISTERED_LABS = [
+  'SmileWorks Lab',
+  'Apex Dental Studio',
+  'Lumina Prosthodontics',
+  'Precision Craft',
+  'Nova Chairside',
+  'Bayview Dental Lab',
+  'NorthStar Ceramics',
+  'Clearline Ortho Lab',
+];
+
 export function TrustedBy() {
-  const brands = [
-    { name: 'SmileWorks Lab', abbr: 'SW' },
-    { name: 'Apex Dental Studio', abbr: 'AD' },
-    { name: 'Lumina Prosthodontics', abbr: 'LP' },
-    { name: 'Precision Craft', abbr: 'PC' },
-    { name: 'Nova Chairside', abbr: 'NC' },
-  ];
+  const loop = [...REGISTERED_LABS, ...REGISTERED_LABS];
 
   return (
-    <section className="py-12 md:py-14 border-y border-border bg-base overflow-hidden">
-      <Container>
+    <section className="border-y border-border bg-base overflow-hidden">
+      <Container className="py-10 md:py-12">
         <FadeIn>
-          <p className="text-center text-xs md:text-sm font-semibold text-muted mb-8 uppercase tracking-[0.2em]">
+          <p className="text-center text-sm font-semibold text-dark md:text-base">
             Trusted by labs & multi-location clinics
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-14">
-            {brands.map((b) => (
-              <div
-                key={b.name}
-                className="group flex items-center gap-3 text-dark/45 hover:text-dark/80 transition-colors duration-300"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-xs font-bold text-primary shadow-sm">
-                  {b.abbr}
-                </span>
-                <span className="text-sm md:text-base font-semibold tracking-tight max-w-[140px] leading-snug">
-                  {b.name}
-                </span>
-              </div>
-            ))}
-          </div>
         </FadeIn>
       </Container>
+
+      {/* Registered labs — continuous right → left scroll */}
+      <div className="border-t border-border bg-tint">
+        <p className="text-center text-xs font-bold text-dark uppercase tracking-[0.2em] pt-4 pb-1">
+          Registered labs
+        </p>
+        <div className="relative overflow-hidden pb-5 pt-2">
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-tint to-transparent sm:w-16"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-tint to-transparent sm:w-16"
+            aria-hidden
+          />
+          <div
+            className="flex w-max animate-labs-marquee will-change-transform motion-reduce:animate-none"
+            aria-hidden
+          >
+            {loop.map((name, i) => (
+              <span
+                key={`${name}-${i}`}
+                className="inline-flex items-center gap-2.5 whitespace-nowrap px-8 py-1 text-base font-semibold text-dark sm:px-10 sm:text-lg"
+              >
+                <span className="h-2 w-2 shrink-0 rounded-full bg-primary shadow-sm ring-2 ring-primary/25" />
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+        <p className="sr-only">
+          Registered labs include: {REGISTERED_LABS.join(', ')}.
+        </p>
+      </div>
     </section>
   );
 }

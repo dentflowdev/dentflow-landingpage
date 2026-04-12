@@ -33,11 +33,13 @@ export function Navbar() {
     >
       <Container>
         <div className="flex items-center justify-between gap-4">
-          <a href="#" className="flex items-center gap-2.5 shrink-0">
+            <a href="#" className="flex items-center gap-2.5 shrink-0">
             <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-lg">D</span>
             </div>
-            <span className="text-xl font-bold text-dark tracking-tight">Dentflow</span>
+            <span className="text-xl font-bold text-dark tracking-tight drop-shadow-sm">
+              Dentflow
+            </span>
           </a>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -45,7 +47,7 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted hover:text-primary transition-colors"
+                className="text-sm font-semibold text-dark/90 hover:text-primary transition-colors drop-shadow-sm"
               >
                 {link.name}
               </a>

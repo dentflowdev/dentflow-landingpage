@@ -25,9 +25,9 @@ export function Button({
 
   return (
     <motion.button
-      whileHover={{ y: -1 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ type: 'spring', stiffness: 520, damping: 28 }}
+      whileHover={{ y: -2, scale: 1.02 }}
+      whileTap={{ scale: 0.94 }}
+      transition={{ type: 'spring', stiffness: 450, damping: 26 }}
       className={clsx(baseStyles, variants[variant], sizes[size], className)}
       {...props}
     >

@@ -1,6 +1,5 @@
 import { Section } from '../components/Section';
 import { Container } from '../components/Container';
-import { FadeIn, StaggerContainer, StaggerItem } from '../components/FadeIn';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -46,60 +45,69 @@ export function FAQ() {
     <Section id="faq">
       <Container>
         <div className="max-w-3xl mx-auto">
-          <FadeIn className="text-center mb-12">
+          <div className="text-center mb-12">
             <p className="text-sm font-bold text-primary tracking-wider uppercase mb-2">FAQ</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">Answers for operators and clinicians</h2>
-            <p className="text-lg text-muted leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#183B56] mb-4">
+              Answers for operators and clinicians
+            </h2>
+            <p className="text-lg leading-relaxed text-[#183B56]/90">
               Straightforward details on rollout, pricing dynamics, and how Dentflow fits your compliance stack.
             </p>
-          </FadeIn>
+          </div>
 
-          <StaggerContainer className="flex flex-col gap-3">
+          {/* No StaggerContainer — avoids Framer variant + desktop layout issues */}
+          <div className="flex flex-col gap-3">
             {faqs.map((faq, index) => {
               const open = openIndex === index;
               return (
-                <StaggerItem key={faq.question}>
-                  <div
-                    className={clsx(
-                      'border border-border rounded-2xl overflow-hidden transition-colors duration-300 bg-card',
-                      open ? 'border-primary/50 shadow-md' : 'hover:border-primary/30'
-                    )}
+                <div
+                  key={faq.question}
+                  className={clsx(
+                    'overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300',
+                    open ? 'border-primary/50 shadow-md' : 'hover:border-primary/30'
+                  )}
+                >
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left sm:px-6 sm:py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    style={{ color: '#183B56' }}
+                    onClick={() => setOpenIndex(open ? -1 : index)}
+                    aria-expanded={open}
                   >
-                    <button
-                      type="button"
-                      className="w-full px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl"
-                      onClick={() => setOpenIndex(open ? -1 : index)}
-                      aria-expanded={open}
-                    >
-                      <span className="font-bold text-dark text-[15px] sm:text-base pr-2">{faq.question}</span>
-                      <ChevronDown
-                        className={clsx(
-                          'text-primary transition-transform duration-300 shrink-0',
-                          open && 'rotate-180'
-                        )}
-                        size={20}
-                      />
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {open && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <p className="px-5 sm:px-6 pb-5 text-muted text-[15px] leading-relaxed border-t border-border/60 pt-4">
-                            {faq.answer}
-                          </p>
-                        </motion.div>
+                    <span className="pr-2 text-[15px] font-bold sm:text-base" style={{ color: '#183B56' }}>
+                      {faq.question}
+                    </span>
+                    <ChevronDown
+                      className={clsx(
+                        'shrink-0 text-primary transition-transform duration-300',
+                        open && 'rotate-180'
                       )}
-                    </AnimatePresence>
-                  </div>
-                </StaggerItem>
+                      size={20}
+                      aria-hidden
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {open && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <p
+                          className="border-t border-border/60 px-5 pt-4 pb-5 text-[15px] leading-relaxed sm:px-6"
+                          style={{ color: 'rgba(24, 59, 86, 0.95)' }}
+                        >
+                          {faq.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               );
             })}
-          </StaggerContainer>
+          </div>
         </div>
       </Container>
     </Section>

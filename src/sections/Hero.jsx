@@ -1,12 +1,13 @@
 import { Button } from '../components/Button';
 import { Container } from '../components/Container';
+import { StoreDownloadButtons } from '../components/StoreDownloadButtons';
 import { FadeIn } from '../components/FadeIn';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, CheckCircle2, TrendingUp, Package } from 'lucide-react';
 
 export function Hero() {
   return (
-    <section className="pt-28 pb-16 md:pt-40 md:pb-28 overflow-hidden relative">
+    <section className="pt-28 pb-16 md:pt-40 md:pb-28 overflow-x-hidden relative">
       <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[min(1000px,100vw)] h-[480px] bg-primary/[0.06] rounded-full blur-3xl -z-10" />
 
       <Container>
@@ -28,7 +29,7 @@ export function Hero() {
             </FadeIn>
 
             <FadeIn delay={0.16}>
-              <p className="text-lg md:text-xl text-muted mb-9 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-lg md:text-xl text-dark/85 mb-9 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Real-time tracking, analytics, and collaboration — built for labs and dentists who need
                 visibility without the back-and-forth.
               </p>
@@ -38,7 +39,7 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <Button size="lg" className="w-full sm:w-auto group shadow-md hover:shadow-lg">
                   Start Free Trial
-                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </Button>
                 <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                   <Play size={18} className="mr-2" />
@@ -47,8 +48,12 @@ export function Hero() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.32}>
-              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-muted font-medium">
+            <div className="mt-8">
+              <StoreDownloadButtons />
+            </div>
+
+            <FadeIn delay={0.36}>
+              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm font-medium text-dark/80">
                 <span className="inline-flex items-center gap-1.5">
                   <CheckCircle2 size={16} className="text-accent shrink-0" /> No credit card
                 </span>
@@ -75,7 +80,7 @@ export function Hero() {
                     <div className="w-2.5 h-2.5 rounded-full bg-[#E8D4A5]" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#A5D9A5]" />
                   </div>
-                  <div className="ml-3 flex-1 h-7 rounded-lg bg-white/80 border border-border text-xs text-muted flex items-center px-3">
+                  <div className="ml-3 flex-1 h-7 rounded-lg bg-white/90 border border-border text-xs text-dark/70 flex items-center px-3">
                     app.dentflow.io / lab / orders
                   </div>
                 </div>

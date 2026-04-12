@@ -8,15 +8,45 @@
   --color-card: #FFFFFF;
   --color-accent: #63C7C0;
   --color-dark: #183B56;
-  --color-muted: #5B718B;
+  --color-muted: #4a5f73;
   --color-border: #D7E6F3;
 }
 
+/* Slightly darker than old muted for laptop / low-contrast displays */
+/* Explicit body copy color — fixes laptop cases where theme `text-dark` + inherit chain failed */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-base text-dark antialiased;
+    @apply bg-base antialiased;
+    color: #183b56;
+  }
+  /* Preflight sets button { color: inherit } — force readable FAQ / form controls on white cards */
+  .bg-card {
+    color: #183b56;
+  }
+  blockquote {
+    color: #183b56;
+  }
+}
+
+/* Registered labs — scrolls right → left (infinite) */
+@keyframes labs-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-labs-marquee {
+  animation: labs-marquee 55s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-labs-marquee {
+    animation: none;
   }
 }

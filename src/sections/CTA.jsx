@@ -1,6 +1,7 @@
 import { Section } from '../components/Section';
 import { Container } from '../components/Container';
 import { Button } from '../components/Button';
+import { StoreDownloadButtons } from '../components/StoreDownloadButtons';
 import { FadeIn } from '../components/FadeIn';
 import { ArrowRight } from 'lucide-react';
 
@@ -38,6 +39,11 @@ export function CTA() {
             </Button>
           </div>
         </FadeIn>
+        <StoreDownloadButtons
+          label="Or install the mobile app"
+          align="center"
+          className="mt-10 max-w-3xl mx-auto [&_p]:text-white/75 [&_a]:ring-white/15"
+        />
       </Container>
     </Section>
   );
