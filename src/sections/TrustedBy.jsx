@@ -1,64 +1,39 @@
 import { Container } from '../components/Container';
 import { FadeIn } from '../components/FadeIn';
 
-/** Labs shown in the scrolling strip (duplicated in DOM for seamless loop). */
-const REGISTERED_LABS = [
-  'SmileWorks Lab',
-  'Apex Dental Studio',
-  'Lumina Prosthodontics',
-  'Precision Craft',
-  'Nova Chairside',
-  'Bayview Dental Lab',
-  'NorthStar Ceramics',
-  'Clearline Ortho Lab',
-];
-
 export function TrustedBy() {
-  const loop = [...REGISTERED_LABS, ...REGISTERED_LABS];
+  const problems = [
+    'Doctors constantly call labs for order status',
+    'Receptionists manually search records',
+    'Technicians work without structured tracking',
+    'Delivery depends on manual coordination',
+  ];
 
   return (
-    <section className="border-y border-border bg-base overflow-hidden">
-      <Container className="py-10 md:py-12">
+    <section id="problem" className="problem-section border-y border-border bg-base">
+      <Container className="py-14 md:py-16">
         <FadeIn>
-          <p className="text-center text-sm font-semibold text-dark md:text-base">
-            Trusted by labs & multi-location clinics
-          </p>
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Problem</p>
+            <h2 className="mb-5 text-3xl font-bold text-dark md:text-4xl">
+              Still Managing Lab Orders on Calls & Paper?
+            </h2>
+            <ul className="mx-auto mb-6 grid max-w-3xl grid-cols-1 gap-3 text-left sm:grid-cols-2">
+              {problems.map((problem) => (
+                <li
+                  key={problem}
+                  className="problem-card rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-dark sm:text-base"
+                >
+                  {problem}
+                </li>
+              ))}
+            </ul>
+            <p className="text-lg leading-relaxed text-muted">
+              This leads to delays, confusion, and wasted time.
+            </p>
+          </div>
         </FadeIn>
       </Container>
-
-      {/* Registered labs — continuous right → left scroll */}
-      <div className="border-t border-border bg-tint">
-        <p className="text-center text-xs font-bold text-dark uppercase tracking-[0.2em] pt-4 pb-1">
-          Registered labs
-        </p>
-        <div className="relative overflow-hidden pb-5 pt-2">
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-tint to-transparent sm:w-16"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-tint to-transparent sm:w-16"
-            aria-hidden
-          />
-          <div
-            className="flex w-max animate-labs-marquee will-change-transform motion-reduce:animate-none"
-            aria-hidden
-          >
-            {loop.map((name, i) => (
-              <span
-                key={`${name}-${i}`}
-                className="inline-flex items-center gap-2.5 whitespace-nowrap px-8 py-1 text-base font-semibold text-dark sm:px-10 sm:text-lg"
-              >
-                <span className="h-2 w-2 shrink-0 rounded-full bg-primary shadow-sm ring-2 ring-primary/25" />
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-        <p className="sr-only">
-          Registered labs include: {REGISTERED_LABS.join(', ')}.
-        </p>
-      </div>
     </section>
   );
 }

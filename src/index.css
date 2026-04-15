@@ -53,6 +53,13 @@
 
 /* FAQ: force readable text on desktop (Chrome/Edge + Framer + flex sometimes left questions invisible) */
 @layer components {
+  .problem-section .problem-card {
+    background-color: #ffffff !important;
+    color: #183b56 !important;
+    -webkit-text-fill-color: #183b56 !important;
+    opacity: 1 !important;
+  }
+
   .faq-section .faq-heading {
     color: #183b56 !important;
     -webkit-text-fill-color: #183b56 !important;

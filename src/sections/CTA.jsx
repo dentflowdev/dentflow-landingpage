@@ -15,11 +15,10 @@ export function CTA() {
       <Container className="relative z-10">
         <FadeIn className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 tracking-tight">
-            Start managing your lab smarter today
+            Take Control of Your Lab Operations
           </h2>
           <p className="text-lg md:text-xl text-white/85 mb-10 leading-relaxed">
-            Spin up a workspace in minutes, invite your team with lab codes, and give dentists live visibility
-            before the next case ships.
+            Replace manual tracking with a structured, real-time system.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
@@ -27,7 +26,7 @@ export function CTA() {
               variant="secondary"
               className="w-full sm:w-auto px-8 shadow-lg group"
             >
-              Start free trial
+              Get Started Today
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
             </Button>
             <Button
@@ -35,7 +34,7 @@ export function CTA() {
               variant="outline"
               className="w-full sm:w-auto px-8 border-white/35 text-white hover:bg-white/10 hover:border-white"
             >
-              Book a live demo
+              Book a Demo
             </Button>
           </div>
         </FadeIn>

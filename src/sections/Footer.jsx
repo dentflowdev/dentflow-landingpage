@@ -15,8 +15,7 @@ export function Footer() {
               <span className="text-xl font-bold text-dark tracking-tight">Dentflow</span>
             </div>
             <p className="text-muted text-sm leading-relaxed mb-6 max-w-sm">
-              B2B dental lab operations software — real-time orders, analytics, and RBAC for teams who cannot
-              afford another communication gap.
+              Built for modern dental labs to simplify operations and improve efficiency.
             </p>
             <div className="space-y-1 text-sm">
               <p className="text-dark font-semibold">Contact</p>

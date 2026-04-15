@@ -4,64 +4,64 @@ import { Card } from '../components/Card';
 import { FadeIn, StaggerContainer, StaggerItem } from '../components/FadeIn';
 import {
   Activity,
-  Building2,
   LayoutDashboard,
-  BarChart3,
   Shield,
-  UserCheck,
-  WifiOff,
+  UserCog,
+  Stethoscope,
   FileSpreadsheet,
+  ClipboardList,
+  Users,
 } from 'lucide-react';
 
 export function Features() {
   const features = [
     {
-      icon: <Activity size={22} className="text-primary" />,
-      title: 'Live order tracking',
+      icon: <ClipboardList size={22} className="text-primary" />,
+      title: 'Order Management',
       description:
-        'Doctors follow every stage with timestamps — fewer calls, clearer expectations, faster chairside planning.',
+        'Create detailed lab orders with clinical specifications, attach files and instructions, and move cases from Created to In Progress to Ready to Delivered.',
     },
     {
-      icon: <Building2 size={22} className="text-accent" />,
-      title: 'Multi-lab ordering',
+      icon: <Activity size={22} className="text-accent" />,
+      title: 'Real-Time Order Tracking',
       description:
-        'Route work to any registered lab from one account while preserving case history and preferences.',
-    },
-    {
-      icon: <LayoutDashboard size={22} className="text-primary" />,
-      title: 'Lab dashboard overview',
-      description:
-        'At-a-glance views for new, in-progress, delayed, and delivered orders with filters that match your floor.',
-    },
-    {
-      icon: <BarChart3 size={22} className="text-accent" />,
-      title: 'Analytics & insights',
-      description:
-        '7- and 30-day trends, throughput, and delivery precision — export-ready when leadership asks “why”.',
+        'Doctors can track every order stage in real time and see exactly when a case moved from one stage to the next.',
     },
     {
       icon: <Shield size={22} className="text-primary" />,
-      title: 'RBAC & team roles',
+      title: 'Role-Based Access Control',
       description:
-        'Granular permissions and unique lab codes keep contractors, technicians, and admins in the right lane.',
+        'Admin has full control, receptionists manage order intake, technicians update progress via barcode search, and delivery agents complete final delivery.',
     },
     {
-      icon: <UserCheck size={22} className="text-accent" />,
-      title: 'Team activity tracking',
+      icon: <Stethoscope size={22} className="text-accent" />,
+      title: 'Doctor Management',
       description:
-        'See which teammate touched an order, what changed, and when — ideal for QA and coaching moments.',
+        'Doctors get their own view with graphs, an orders-by-lab section, and lab-wise filters to quickly find and monitor cases.',
     },
     {
-      icon: <WifiOff size={22} className="text-primary" />,
-      title: 'Offline order creation',
+      icon: <Users size={22} className="text-primary" />,
+      title: 'User Management',
       description:
-        'Log paper or phone prescriptions as structured orders so production stays in one system of record.',
+        'Assign roles to staff dynamically and control access based on responsibilities.',
+    },
+    {
+      icon: <LayoutDashboard size={22} className="text-accent" />,
+      title: 'Admin Dashboard',
+      description:
+        'Track total orders, daily trends, team leaderboard, top doctors, turnaround time (TAT), and delivery performance from one dashboard.',
     },
     {
       icon: <FileSpreadsheet size={22} className="text-accent" />,
-      title: 'Excel reports export',
+      title: 'Data Export & Reports',
       description:
-        'One-click packs for 7d, 1m, 3m, 6m, and 1y with orders, doctor breakdowns, and embedded chart snapshots.',
+        'Download complete order data in Excel for 7 days, 1 month, 3 months, 6 months, or 1 year with order details, doctor-wise data, and analytics summaries.',
+    },
+    {
+      icon: <UserCog size={22} className="text-primary" />,
+      title: 'Doctor Ordering Portal',
+      description:
+        'Doctors can place orders directly to any registered lab and continue tracking those orders from submission to delivery.',
     },
   ];
 
@@ -70,13 +70,13 @@ export function Features() {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
           <FadeIn>
-            <p className="text-sm font-bold text-primary tracking-wider uppercase mb-2">Platform</p>
+            <p className="text-sm font-bold text-primary tracking-wider uppercase mb-2">Solution</p>
             <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-              Purpose-built for dental production workflows
+              One Platform to Manage Your Entire Lab Workflow
             </h2>
             <p className="text-lg text-muted leading-relaxed">
-              Everything in Dentflow maps to how cases actually move — from prescription to bench to
-              dispatch — without bolting on generic project tools.
+              DentoLabs digitizes your entire dental lab process - from order creation to final delivery -
+              with clear tracking and role-based access.
             </p>
           </FadeIn>
         </div>

@@ -4,7 +4,13 @@ import { clsx } from 'clsx';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-export function Navbar() {
+export function Navbar({
+  showNavLinks = true,
+  isAuthenticated = false,
+  onLoginClick,
+  onLogout,
+  onBrandClick,
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -33,16 +39,21 @@ export function Navbar() {
     >
       <Container>
         <div className="flex items-center justify-between gap-4">
-            <a href="#" className="flex items-center gap-2.5 shrink-0">
+          <button
+            type="button"
+            onClick={onBrandClick}
+            className="flex items-center gap-2.5 shrink-0"
+            aria-label="Go to home"
+          >
             <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-lg">D</span>
             </div>
             <span className="text-xl font-bold text-dark tracking-tight drop-shadow-sm">
               Dentflow
             </span>
-          </a>
+          </button>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className={clsx('hidden lg:flex items-center gap-8', !showNavLinks && 'invisible')}>
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -55,9 +66,20 @@ export function Navbar() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Button size="sm" className="shadow-sm">
-              Get Started
-            </Button>
+            {showNavLinks && (
+              <Button size="sm" className="shadow-sm">
+                Get Started
+              </Button>
+            )}
+            {isAuthenticated ? (
+              <Button variant="outline" size="sm" onClick={onLogout}>
+                Logout
+              </Button>
+            ) : (
+              <Button variant="outline" size="sm" onClick={onLoginClick}>
+                Login
+              </Button>
+            )}
           </div>
 
           <button
@@ -73,20 +95,46 @@ export function Navbar() {
 
         {mobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-border px-4 py-4 shadow-lg flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-dark px-3 py-3 rounded-xl hover:bg-tint transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="pt-3 mt-2 border-t border-border">
-              <Button className="w-full justify-center" onClick={() => setMobileMenuOpen(false)}>
-                Get Started
-              </Button>
+            {showNavLinks &&
+              navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-medium text-dark px-3 py-3 rounded-xl hover:bg-tint transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            <div className="pt-3 mt-2 border-t border-border space-y-2">
+              {showNavLinks && (
+                <Button className="w-full justify-center" onClick={() => setMobileMenuOpen(false)}>
+                  Get Started
+                </Button>
+              )}
+              {isAuthenticated ? (
+                <Button
+                  variant="outline"
+                  className="w-full justify-center"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onLogout?.();
+                  }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button
+                  variant="outline"
+                  className="w-full justify-center"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onLoginClick?.();
+                  }}
+                >
+                  Login
+                </Button>
+              )}
             </div>
           </div>
         )}

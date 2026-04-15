@@ -6,20 +6,25 @@ export function Workflow() {
   const steps = [
     {
       number: '01',
-      title: 'Dentist places order',
-      description: 'Easily submit digital prescriptions and upload 3D scans directly to the chosen lab.',
+      title: 'Setup Your Lab',
+      description: 'Register your lab and get a unique Lab Code.',
     },
     {
       number: '02',
-      title: 'Lab processes & updates',
-      description: 'The lab receives the order, assigns it to a technician, and updates the production stage.',
+      title: 'Add Your Team',
+      description: 'Staff joins using Lab Code and you assign roles: Admin, Receptionist, Technician, Delivery.',
     },
     {
       number: '03',
-      title: 'Doctor tracks progress live',
+      title: 'Start Managing Orders',
       description:
-        'Clinicians follow each stage with timestamps — fewer status calls, clearer patient conversations.',
-    }
+        'Receptionist creates orders, technician updates progress, and delivery completes the final stage.',
+    },
+    {
+      number: '04',
+      title: 'Track Everything',
+      description: 'Admin monitors performance while doctors track their cases directly in real time.',
+    },
   ];
 
   return (
@@ -29,9 +34,9 @@ export function Workflow() {
           <div className="flex-1">
             <FadeIn>
               <h2 className="text-sm font-bold text-primary tracking-wider uppercase mb-2">How it works</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-dark mb-6">Seamless workflow from clinic to lab</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-dark mb-6">Run your lab in 4 simple steps</h3>
               <p className="text-lg text-muted mb-10">
-                Dentflow bridges the gap between dentists and dental labs with an intuitive, transparent process that saves time and reduces errors.
+                DentoLabs keeps your full operation structured - from onboarding your team to tracking every order stage in one system.
               </p>
             </FadeIn>
 

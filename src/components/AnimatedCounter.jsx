@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { animate, useInView } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { animate } from 'framer-motion';
 
 /**
- * Counts up when mounted. `useInView` uses `initial: true` + generous margin so
- * IntersectionObserver matches laptop and phone (negative margin caused mobile to stay at 0).
+ * Counts up when mounted.
+ * Using immediate mount animation avoids IntersectionObserver edge cases where
+ * counters could stay at 0 on some browser/device combinations.
  */
 export function AnimatedCounter({
   value,
@@ -13,26 +14,16 @@ export function AnimatedCounter({
   duration = 1.65,
   className = '',
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 'some',
-    margin: '160px 0px 160px 0px',
-    initial: true,
-  });
   const [display, setDisplay] = useState(0);
-  const ran = useRef(false);
 
   useEffect(() => {
-    if (!isInView || ran.current) return;
-    ran.current = true;
     const controls = animate(0, value, {
       duration,
       ease: [0.16, 1, 0.3, 1],
       onUpdate: (v) => setDisplay(v),
     });
     return () => controls.stop();
-  }, [isInView, value, duration]);
+  }, [value, duration]);
 
   const text =
     decimals > 0
@@ -40,7 +31,7 @@ export function AnimatedCounter({
       : Math.round(display).toLocaleString();
 
   return (
-    <span ref={ref} className={className}>
+    <span className={className}>
       {prefix}
       {text}
       {suffix}

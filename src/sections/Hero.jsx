@@ -13,37 +13,29 @@ export function Hero() {
       <Container>
         <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-16">
           <div className="flex-1 text-center lg:text-left">
-            <FadeIn>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-border text-dark text-sm font-medium mb-6 shadow-sm">
-                <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" aria-hidden />
-                New: production stages & Excel exports
-              </div>
-            </FadeIn>
-
             <FadeIn delay={0.08}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-7xl font-bold tracking-tight text-dark leading-[1.08] mb-6">
-                Streamline{' '}
-                <span className="text-primary">Dental Lab</span>
-                <br className="hidden sm:block" /> Operations & Orders
+                Streamline Your Dental Lab Operations
+                <br className="hidden sm:block" /> - From Order to Delivery
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.16}>
               <p className="text-lg md:text-xl text-dark/85 mb-9 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Real-time tracking, analytics, and collaboration — built for labs and dentists who need
-                visibility without the back-and-forth.
+                DentoLabs helps dental labs, doctors, and technicians manage orders, track progress, and
+                eliminate manual follow-ups - all in one system.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.24}>
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <Button size="lg" className="w-full sm:w-auto group shadow-md hover:shadow-lg">
-                  Start Free Trial
+                  Get Started
                   <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </Button>
                 <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                   <Play size={18} className="mr-2" />
-                  Book Demo
+                  Request Demo
                 </Button>
               </div>
             </FadeIn>
@@ -134,19 +126,6 @@ export function Hero() {
               </motion.div>
             </FadeIn>
 
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-              className="absolute -bottom-6 -left-2 sm:-left-6 z-20 bg-card p-4 rounded-2xl shadow-xl border border-border flex items-center gap-4 max-w-[280px]"
-            >
-              <div className="w-11 h-11 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
-                <CheckCircle2 size={22} className="text-accent" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-bold text-dark truncate">Stage updated</p>
-                <p className="text-xs text-muted">Crown #1042 · QC passed · 2m ago</p>
-              </div>
-            </motion.div>
           </div>
         </div>
       </Container>

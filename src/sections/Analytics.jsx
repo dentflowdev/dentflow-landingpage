@@ -16,11 +16,11 @@ export function Analytics() {
           <FadeIn>
             <p className="text-sm font-bold text-primary tracking-wider uppercase mb-2">Analytics</p>
             <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-              Dashboards that match how labs actually work
+              Admin Dashboard
             </h2>
             <p className="text-lg text-muted leading-relaxed">
-              Spot bottlenecks early, compare 7- and 30-day trends, and prove delivery precision to
-              partners — without exporting to a spreadsheet first.
+              Total order overview, daily trends, team leaderboard, top doctors, turnaround time metrics,
+              and delivery performance in one place.
             </p>
           </FadeIn>
         </div>
@@ -33,7 +33,7 @@ export function Analytics() {
                 <p className="text-sm text-muted mt-1">Last 30 days vs. prior period · sample data</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                {['7D', '30D', '3M', '1Y'].map((label, i) => (
+                {['7D', '1M', '3M', '6M', '1Y'].map((label, i) => (
                   <button
                     key={label}
                     type="button"
@@ -130,9 +130,9 @@ export function Analytics() {
 
             <div className="mt-6 lg:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
-                { title: 'Efficiency', body: 'Compare in-progress vs. delayed orders by technician and stage.' },
-                { title: 'Doctor breakdown', body: 'See which accounts drive volume and turnaround variance.' },
-                { title: 'Exports', body: 'Download Excel packs for 7d–1y with charts embedded for leadership reviews.' },
+                { title: 'Order details', body: 'Export detailed order data for leadership reviews and operational audits.' },
+                { title: 'Orders by lab', body: 'View lab-wise order counts and performance graphs, then filter orders by selected lab.' },
+                { title: 'Analytics summaries', body: 'Download Excel exports for 7 days, 1 month, 3 months, 6 months, or 1 year.' },
               ].map((item) => (
                 <div
                   key={item.title}
